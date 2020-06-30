@@ -1,18 +1,20 @@
 import urllib.request
 import json
+import ssl
 
 
 NASA = "https://api.nasa.gov/planetary/apod?"
 
 def main():
-
-    with open("/home/student/nasa.creds") as mycreds:
+    with open("nasa_creds.py") as mycreds:
         nasacreds = mycreds.read()
 
 
     nasacreds = "api_key=" + nasacreds.strip("\n")
 
-    apodurlobj = urllib.request.urlopen(NASA + nasacreds)
+    context = ssl._create_unverified_context()
+
+    apodurlobj = urllib.request.urlopen(NASA + nasacreds, context=context)
 
     apodread = apodurlobj.read()
 
