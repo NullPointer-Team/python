@@ -26,7 +26,13 @@ def main():
     for core in listOfCores:
         print(core['core_serial'])
         print(core['original_launch'], end="\n\n")
+        #print(core, end="\n\n")
+        missions = core['missions']
+        if (len(missions) > 1 ):
+            for mission in missions:
+                print(f"- Flight {mission['flight']} in support of mission {mission['name']}")
 
+        print("\n")
 
 if __name__ == "__main__":
     main()
