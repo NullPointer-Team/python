@@ -6,7 +6,7 @@ import ssl
 NASA = "https://api.nasa.gov/planetary/apod?"
 
 def main():
-    with open("nasa_creds.py") as mycreds:
+    with open("../../../nasa.py") as mycreds:
         nasacreds = mycreds.read()
 
 
