@@ -1,5 +1,6 @@
 import urllib.request
 import json
+
 MAJORTOM = "http://api.open-notify.org/astros.json"
 
 def main():
