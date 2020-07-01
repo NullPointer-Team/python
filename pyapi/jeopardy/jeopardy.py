@@ -7,28 +7,37 @@ import json
 jeopardy = "http://jservice.io/api/random"
 
 def main():
-    # create a urllib.request response object by sending an HTTP GET to SPACEXURI
-    # context = ssl._create_unverified_context()
-    coreData = urllib.request.urlopen(jeopardy)
+    counter = 0
+    score = 0
 
-    #core = coreData.read()
-    #print(core)
-    # pull STRING data off of the 200 response (even tho it's JSON!)
-    xString = coreData.read().decode()
-    #print(type(xString))
+    while counter < 10:
+        coreData = urllib.request.urlopen(jeopardy)
 
-    # convert STRING data into Python Lists and Dictionaries
-    trivia = json.loads(xString)
-    #print(type(listOfCores))
+        #core = coreData.read()
+        #print(core)
+        # pull STRING data off of the 200 response (even tho it's JSON!)
+        xString = coreData.read().decode()
+        #print(type(xString))
 
-    question = trivia[0]['question']
-    answer = trivia[0]['answer']
+        # convert STRING data into Python Lists and Dictionaries
+        trivia = json.loads(xString)
 
-    print(question)
+        question = trivia[0]['question']
+        answer = trivia[0]['answer']
 
-    guess = input("\nYour answer: ")
-    if (guess == answer):
-        print("you are correct!")
+        print(question)
+
+        guess = input("\nYour answer: ")
+        if (guess == answer.lower()):
+            print("you are correct!")
+            score += 1
+        else:
+            print("that is not correct!")
+            print("\nthe correct answer was ", answer)
+
+        counter+=1
+
+    print(f"your final score is {score}")
 
 if __name__ == "__main__":
     main()
