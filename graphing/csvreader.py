@@ -10,7 +10,7 @@ def parsecsvdata():
     with open("2018summary.csv") as downtime:
         downdata = csv.reader(downtime, delimiter=",")
         for row in downdata:
-            rowdat = (row[0], row[1], row[2], row[3])
+            rowdat = [row[0], row[1], row[2], row[3]]
             summary.append(rowdat)
     return summary
 
@@ -19,10 +19,21 @@ def main():
     N = 4
     summary = parsecsvdata()
 
-    localnetMeans = summary[0]
-    print(f"localnetMeans is {summary[0]}\n")
-    wanMeans =  summary[1]
-    print(f"wanMeans is {summary[1]}\n")
+    localnetMeans_array = []
+    wanMeans_array = []
+
+    for item in summary[0]:
+        localnetMeans_array.append(int(item))
+
+    localnetMeans = tuple(localnetMeans_array)
+
+    for item in summary[1]:
+        wanMeans_array.append(int(item))
+
+    wanMeans = tuple(wanMeans_array)
+
+    print(f"localnetMeans is {localnetMeans}\n")
+    print(f"wanMeans is {wanMeans}\n")
 
     #localnetMeans = (20, 35, 30, 35)
     #wanMeans = (25, 32, 34, 20)
