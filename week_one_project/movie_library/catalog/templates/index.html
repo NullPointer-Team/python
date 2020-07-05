@@ -1,0 +1,12 @@
+{% extends 'base_generic.html' %}
+
+{% block content %}
+<h2>OMDB API</h2>
+<form method="get">
+  <input type="text" name="title">
+  <button type="submit">search on OMDB</button>
+</form>
+{% if movie %}
+<p><strong>{{ movie.title }}</strong> has a <strong>{{ movie.rating }}</strong> rating.</p>
+{% endif %}
+{% endblock %}
