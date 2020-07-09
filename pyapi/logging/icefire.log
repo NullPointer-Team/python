@@ -1,0 +1,6 @@
+INFO:07/09/2020 10:$M:15 AM Scripting started
+CRITICAL:07/09/2020 10:$M:15 AM name 'request' is not defined
+INFO:07/09/2020 10:$M:15 AM Program ended
+INFO:07/09/2020 10:$M:05 AM Scripting started
+CRITICAL:07/09/2020 10:$M:05 AM name 'request' is not defined
+INFO:07/09/2020 10:$M:05 AM Program ended
