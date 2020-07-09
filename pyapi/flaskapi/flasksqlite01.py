@@ -21,16 +21,16 @@ def addrec():
             pin = request.form["pin"]
 
             with sql.connect("database.db") as con:
-                con.execute('''DROP TABLE STUDENTS;''')
+                #con.execute('''DROP TABLE STUDENTS;''')
                 cur = con.cursor()
-                con.execute('''CREATE TABLE STUDENTS
+                con.execute('''CREATE TABLE IF NOT EXISTS STUDENTS
                 (NAME TEXT NOT NULL,
                 ADDR TEXT NOT NULL,
                 CITY TEXT NOT NULL,
                 PIN INT PRIMARY KEY NOT NULL);''')
                 cur = con.cursor()
 
-                cur.execute(f"INSERT INTO students (name, addr, city, pin) VALUES ({nm},{addr},{city},{pin});")
+                cur.execute(f"INSERT INTO students (name, addr, city, pin) VALUES (?,?,?,?)", (nm, addr, city, pin))
                 con.commit()
                 msg = "Record successfully added"
 
@@ -49,7 +49,7 @@ def list():
     con.row_factory = sql.Row
 
     cur = con.cursor()
-    cur.execute("select * from students")
+    cur.execute("SELECT * from students")
 
     rows = cur.fetchall()
     return render_template("list.html", rows = rows)
