@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+
+  <body>
+    <table border=1>
+      <thead>
+        <td>Title</td>
+        <td>Year</td>
+        <<td>Add</td>
+      </thead>
+
+      {% for movie in movies %}
+      <tr>
+        <td>{{movie['Title']}}</td>
+        <td>{{movie['Year']}}</td>
+        <td>
+          <form action="{{ url_for('addmovie') }}" method="POST">
+            <input type="hidden" name="title" value="{{movie['Title']}}" />
+            <input type="hidden" name="year" value={{movie['Year']}} />
+            <input type="submit" value="add" />
+          </form>
+
+        </td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <a href="/">Go back to home page</a>
+  </body>
+
+</html>
